@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="37303e00-2d99-4444-9552-0ce6c6da5cbc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/controller/RoleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/dto/Response/CategoryResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/dto/Response/ImageResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/dto/Response/TagResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/entity/EventCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/entity/EventTag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/entity/UserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/repository/EventCategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/repository/EventTagRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/repository/UserRoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/TagService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EventBookingUI/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/HELP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/EventBookingApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/config/AppConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/config/SecurityConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/config/SwaggerConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/controller/AdminController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/controller/AuthController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/controller/BookingController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/controller/CategoryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/controller/EventController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Request/BookingRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Request/CategoryRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Request/EventRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Request/LoginRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Request/RegisterRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Request/RoleRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Response/ApiResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Response/BookingResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Response/CategoryResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Response/EventResponse$CategoryDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Response/EventResponse$EventImageDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Response/EventResponse$TagDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Response/EventResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Response/JwtResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Response/UserResponse$UserResponseBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/dto/Response/UserResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/entity/Booking.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/entity/Category.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/entity/Event.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/entity/EventImage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/entity/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/entity/Tag.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/entity/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/enums/BookingStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/enums/PaymentStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/exception/ErrorDetails.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/exception/GlobalException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/exception/GlobalExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/repository/BookingRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/repository/CategoryRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/repository/EventImageRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/repository/EventRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/repository/RoleRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/repository/TagRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/repository/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/security/JwtAuthenticationFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/security/JwtUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/security/JwtUtilsUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/service/AdminService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/service/AuthService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/service/BookingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/service/CategoryService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/service/EventService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/service/FileStorageService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/service/impl/AdminServiceImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/service/impl/AuthServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/service/impl/BookingServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/service/impl/CategoryServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/service/impl/EventServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/service/impl/FileStorageServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/service/impl/UserServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/db/migration/V1__Insert_data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/messages.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/messages_ar.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/surefire-reports/TEST-com.spring.eventbooking.EventBookingApplicationTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/surefire-reports/com.spring.eventbooking.EventBookingApplicationTests.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/test-classes/com/spring/eventbooking/EventBookingApplicationTests.class" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2x0XrlXAllSpXcS88HvL2DO56ML" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.EventBookingApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.spring.eventbooking.dto.Response" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="eventbooking" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="eventbooking" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration name="EventBookingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="eventbooking" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.spring.eventbooking.EventBookingApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.spring.eventbooking.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.EventBookingApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="37303e00-2d99-4444-9552-0ce6c6da5cbc" name="Changes" comment="" />
+      <created>1747076165122</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1747076165122</updated>
+      <workItem from="1747076166208" duration="15000" />
+      <workItem from="1747077297809" duration="191000" />
+      <workItem from="1747077505165" duration="80000" />
+      <workItem from="1747077597697" duration="92000" />
+      <workItem from="1747077723225" duration="597000" />
+      <workItem from="1747078386110" duration="5264000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
