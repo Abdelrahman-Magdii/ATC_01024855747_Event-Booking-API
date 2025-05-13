@@ -2,6 +2,7 @@ package com.spring.eventbooking.dto.Response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
 import java.util.List;
 
 @Data

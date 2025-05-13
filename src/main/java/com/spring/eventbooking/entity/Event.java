@@ -1,23 +1,23 @@
 package com.spring.eventbooking.entity;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "events")
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @Setter
 @Getter
 @NoArgsConstructor
+@Entity
+@Table(name = "EVENT")
 public class Event {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,42 +35,36 @@ public class Event {
     private LocalDateTime endTime;
 
     private Integer capacity;
-
     private BigDecimal price;
-
     private String location;
+    private boolean published;
 
-    @Column(nullable = false)
-    private boolean published = false;
-
-    @Column(nullable = false)
     private LocalDateTime createdAt;
-
     private LocalDateTime updatedAt;
 
     @ManyToOne
-    @JoinColumn(name = "created_by")
+    @JoinColumn(name = "createdBy")
     private User createdBy;
 
-    @OneToMany(mappedBy = "event")
-    private Set<Booking> bookings = new HashSet<>();
-
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<EventCategory> eventCategories = new HashSet<>();
+    private List<Booking> bookings = new ArrayList<>();
 
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<EventTag> eventTags = new HashSet<>();
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<EventImage> images = new HashSet<>();
 
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<EventImage> eventImages = new HashSet<>();
+    @ManyToMany
+    @JoinTable(
+            name = "EVENT_CATEGORY",
+            joinColumns = @JoinColumn(name = "eventId"),
+            inverseJoinColumns = @JoinColumn(name = "categoryId")
+    )
+    private Set<Category> categories = new HashSet<>();
 
-    @PrePersist
-    public void prePersist() {
-        this.createdAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        this.updatedAt = LocalDateTime.now();
-    }
+    @ManyToMany
+    @JoinTable(
+            name = "EVENT_TAG",
+            joinColumns = @JoinColumn(name = "eventId"),
+            inverseJoinColumns = @JoinColumn(name = "tagId")
+    )
+    private Set<Tag> tags = new HashSet<>();
 }

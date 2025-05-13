@@ -1,19 +1,22 @@
 package com.spring.eventbooking.entity;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Entity
-@Table(name = "users") // 'user' is a reserved keyword in some databases
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
+@Entity
+@Table(name = "USER")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,30 +31,22 @@ public class User {
     private String lastName;
     private String phoneNumber;
 
-    @Column(nullable = false)
     private LocalDateTime createdAt;
-
     private LocalDateTime updatedAt;
+    private boolean active;
 
-    @Column(nullable = false)
-    private boolean active = true;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "USER_ROLE",
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "roleId")
+    )
+    private Set<Role> roles = new HashSet<>();
 
     @OneToMany(mappedBy = "user")
-    private Set<UserRole> userRoles = new HashSet<>();
-
-    @OneToMany(mappedBy = "user")
-    private Set<Booking> bookings = new HashSet<>();
+    private List<Booking> bookings = new ArrayList<>();
 
     @OneToMany(mappedBy = "createdBy")
-    private Set<Event> createdEvents = new HashSet<>();
+    private List<Event> createdEvents = new ArrayList<>();
 
-    @PrePersist
-    public void prePersist() {
-        this.createdAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        this.updatedAt = LocalDateTime.now();
-    }
 }

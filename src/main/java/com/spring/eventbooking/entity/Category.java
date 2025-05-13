@@ -1,18 +1,19 @@
 package com.spring.eventbooking.entity;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Entity
-@Table(name = "categories")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@Entity
+@Table(name = "CATEGORY")
 public class Category {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,7 +23,6 @@ public class Category {
 
     private String description;
 
-    @OneToMany(mappedBy = "category")
-    private Set<EventCategory> eventCategories = new HashSet<>();
+    @ManyToMany(mappedBy = "categories")
+    private Set<Event> events = new HashSet<>();
 }
-
