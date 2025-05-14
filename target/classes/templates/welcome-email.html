@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Welcome to Event.com</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .logo {
+            max-width: 150px;
+        }
+
+        .content {
+            padding: 20px 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eeeeee;
+            font-size: 12px;
+            color: #999999;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Welcome to Event!</h1>
+    </div>
+
+    <div class="content">
+        <p>Hello <span th:text="${firstName}">User</span>,</p>
+
+        <p>Thank you for registering with Event.com. We're excited to have you on board!</p>
+
+        <p>To get started, please verify your email address by clicking the button below:</p>
+
+        <p>
+            <a class="button" th:href="${token}">Verify Email Address</a>
+        </p>
+
+        <p>If you didn't create an account with Event.com, please ignore this email.</p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2023 Event.com. All rights reserved.</p>
+        <p>
+            Event.com, 123 Event Street, Event City, EC 12345
+        </p>
+    </div>
+</div>
+</body>
+</html>
