@@ -38,4 +38,7 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> findByEventAndStatus(Event event, String status);
 
     Integer countBookedTicketsByEventId(Long eventId);
+
+    long countByStatus(String status);
+
 }

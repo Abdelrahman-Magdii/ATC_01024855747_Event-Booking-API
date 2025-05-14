@@ -31,8 +31,8 @@ public class User {
     private String lastName;
     private String phoneNumber;
 
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime updatedAt = LocalDateTime.now();
     private boolean active;
 
     @ManyToMany(fetch = FetchType.EAGER)

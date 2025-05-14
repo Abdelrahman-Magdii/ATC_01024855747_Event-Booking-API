@@ -24,4 +24,6 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     @Query("SELECT e FROM Event e WHERE e.startTime > :now AND e.published = true")
     List<Event> findUpcomingEvents(LocalDateTime now);
+    
+    long countByPublishedTrue();
 }

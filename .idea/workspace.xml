@@ -6,20 +6,34 @@
   <component name="ChangeListManager">
     <list default="true" id="37303e00-2d99-4444-9552-0ce6c6da5cbc" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/../.idea/Event Booking.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/mail/Services/EmailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/mail/template/AbstractEmailContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/mail/template/WelcomeEmailContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/welcome-email.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/dto/Request/PublishedRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/dto/Request/RoleUpdateRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/dto/Response/StatsResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/dto/Response/UserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/utiles/GlobalFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../EventBookingUI/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/repository/BookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/repository/BookingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/repository/EventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/repository/EventRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/AdminService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/welcome-email.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/welcome-email.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/service/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/service/AuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/repository/BookingRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/repository/BookingRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/repository/EventRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/repository/EventRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/welcome-email.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/welcome-email.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/HELP.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/application.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/EventBookingApplication.class" beforeDir="false" />
@@ -103,8 +117,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -214,7 +228,7 @@
       <workItem from="1747078386110" duration="5941000" />
       <workItem from="1747106865168" duration="6684000" />
       <workItem from="1747168008882" duration="9716000" />
-      <workItem from="1747188862443" duration="4540000" />
+      <workItem from="1747188862443" duration="14603000" />
     </task>
     <servers />
   </component>

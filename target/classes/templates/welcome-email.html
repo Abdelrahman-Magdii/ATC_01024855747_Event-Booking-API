@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Welcome to Event.com</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Welcome to EventHub!</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #333333;
             margin: 0;
             padding: 0;
+            background-color: #f9f9f9;
         }
 
         .container {
             max-width: 600px;
             margin: 20px auto;
-            padding: 20px;
-            border: 1px solid #e0e0e0;
-            border-radius: 5px;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .header {
@@ -28,7 +30,14 @@
         }
 
         .logo {
-            max-width: 150px;
+            max-width: 180px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin: 0;
+            font-size: 24px;
         }
 
         .content {
@@ -37,12 +46,20 @@
 
         .button {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white !important;
+            padding: 12px 24px;
+            background: #4CAF50;
+            color: #ffffff !important;
             text-decoration: none;
             border-radius: 4px;
+            font-weight: bold;
             margin: 15px 0;
+        }
+
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #4CAF50;
+            padding: 15px;
+            margin: 20px 0;
         }
 
         .footer {
@@ -57,28 +74,43 @@
 <body>
 <div class="container">
     <div class="header">
-        <h1>Welcome to Event!</h1>
+        <h1>Welcome to EventHub, <span th:text="${firstName}">User</span>!</h1>
     </div>
 
     <div class="content">
-        <p>Hello <span th:text="${firstName}">User</span>,</p>
+        <p>Thank you for joining <strong>EventHub</strong>, your go-to platform for discovering and booking amazing
+            events.</p>
 
-        <p>Thank you for registering with Event.com. We're excited to have you on board!</p>
+        <div class="highlight-box">
+            <p><strong>🚀 Get Started:</strong></p>
+            <ul>
+                <li>Browse trending events in your area</li>
+                <li>Book tickets in just a few clicks</li>
+                <li>Manage your bookings from your dashboard</li>
+            </ul>
+        </div>
 
-        <p>To get started, please verify your email address by clicking the button below:</p>
+        <p>We’re excited to help you find your next unforgettable experience!</p>
 
-        <p>
-            <a class="button" th:href="${token}">Verify Email Address</a>
+        <p style="text-align: center;">
+            <a class="button" href="https://eventhub.com/explore">Explore Events</a>
         </p>
 
-        <p>If you didn't create an account with Event.com, please ignore this email.</p>
+        <p>If you have any questions, reply to this email or visit our <a href="https://eventhub.com/help">Help
+            Center</a>.</p>
+
+        <p>Happy eventing!<br>
+            <strong>The EventHub Team</strong></p>
     </div>
 
     <div class="footer">
-        <p>&copy; 2023 Event.com. All rights reserved.</p>
+        <p>&copy; 2025 EventHub. All rights reserved.</p>
         <p>
-            Event.com, 123 Event Street, Event City, EC 12345
+            <a href="https://eventhub.com">Website</a> |
+            <a href="https://eventhub.com/privacy">Privacy Policy</a> |
+            <a href="https://eventhub.com/contact">Contact Us</a>
         </p>
+        <p>EventHub, 123 Event Street, San Francisco, CA 94107</p>
     </div>
 </div>
 </body>

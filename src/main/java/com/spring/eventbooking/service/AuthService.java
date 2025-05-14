@@ -5,18 +5,19 @@ import com.spring.eventbooking.dto.Request.RegisterRequest;
 import com.spring.eventbooking.dto.Response.JwtResponse;
 import com.spring.eventbooking.entity.Role;
 import com.spring.eventbooking.entity.User;
+import com.spring.eventbooking.exception.GlobalException;
 import com.spring.eventbooking.mail.Services.EmailService;
 import com.spring.eventbooking.mail.template.WelcomeEmailContext;
 import com.spring.eventbooking.repository.RoleRepository;
 import com.spring.eventbooking.repository.UserRepository;
 import com.spring.eventbooking.security.JwtUtilsUser;
+import com.spring.eventbooking.utiles.GlobalFunction;
 import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -45,7 +46,7 @@ public class AuthService {
         if (userRepository.existsByEmail(request.getEmail())) {
             return ResponseEntity
                     .badRequest()
-                    .body("Error: Email is already in use!");
+                    .body(GlobalFunction.getMS("email.already.use"));
         }
 
         User user = new User();
@@ -56,12 +57,12 @@ public class AuthService {
 
         Set<Role> roles = new HashSet<>();
         Role userRole = roleRepository.findByName("USER")
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: Role USER is not found."));
+                .orElseThrow(() -> new GlobalException("role.user.notFound", HttpStatus.NOT_FOUND));
         roles.add(userRole);
 
         if (isAdmin) {
             Role adminRole = roleRepository.findByName("ADMIN")
-                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: Role ADMIN is not found."));
+                    .orElseThrow(() -> new GlobalException("role.admin.notFound", HttpStatus.NOT_FOUND));
             roles.add(adminRole);
         }
 
@@ -73,14 +74,14 @@ public class AuthService {
             context.init(user);
             emailService.sendMail(context);
         }
-        
+
         return getResponseEntity(user);
     }
 
     public ResponseEntity<?> login(LoginRequest loginRequest) {
 
         User user = userRepository.findByEmail(loginRequest.getEmail())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+                .orElseThrow(() -> new GlobalException(GlobalFunction.getMS("user.not.found"), HttpStatus.NOT_FOUND));
 
         return getResponseEntity(user);
     }
