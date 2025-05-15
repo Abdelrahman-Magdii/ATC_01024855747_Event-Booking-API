@@ -39,9 +39,9 @@ public class EventRequest {
 
     private boolean published = false;
 
-    private List<Long> categoryIds;
+    private List<String> categories;
 
-    private List<Long> tagIds;
+    private List<String> tags;
 
     private MultipartFile image;
 }

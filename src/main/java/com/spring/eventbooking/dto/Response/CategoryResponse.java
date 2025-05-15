@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-class CategoryResponse {
+public class CategoryResponse {
     private Long id;
     private String name;
     private String description;

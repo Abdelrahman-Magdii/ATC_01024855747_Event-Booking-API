@@ -1,6 +1,6 @@
 package com.spring.eventbooking.enums;
 
-enum PaymentStatus {
+public enum PaymentStatus {
     PENDING,
     CONFIRMED,
     CANCELLED

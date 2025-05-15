@@ -1,12 +1,11 @@
 package com.spring.eventbooking.repository;
 
-
-import com.spring.eventbooking.entity.Category;
 import com.spring.eventbooking.entity.Event;
-import com.spring.eventbooking.entity.Tag;
-import com.spring.eventbooking.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -14,16 +13,20 @@ import java.util.List;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
-    List<Event> findByPublishedTrue();
+    Page<Event> findByTitleContainingIgnoreCase(String title, Pageable pageable);
 
-    List<Event> findByCreatedBy(User user);
+    @Query("SELECT DISTINCT e FROM Event e JOIN e.categories c WHERE LOWER(c.name) LIKE LOWER(CONCAT('%', :categoryName, '%'))")
+    Page<Event> findByCategoryNameContaining(@Param("category") String categoryName, Pageable pageable);
 
-    List<Event> findByCategoriesIn(List<Category> categories);
+    @Query("SELECT DISTINCT e FROM Event e JOIN e.tags t WHERE LOWER(t.name) LIKE LOWER(CONCAT('%', :tagName, '%'))")
+    Page<Event> findByTagNameContaining(@Param("tag") String tagName, Pageable pageable);
 
-    List<Event> findByTagsIn(List<Tag> tags);
 
-    @Query("SELECT e FROM Event e WHERE e.startTime > :now AND e.published = true")
-    List<Event> findUpcomingEvents(LocalDateTime now);
-    
+    Page<Event> findByStartTimeBetween(LocalDateTime startDate, LocalDateTime endDate, Pageable pageable);
+
+    Page<Event> findByPublishedTrue(Pageable pageable);
+
+    List<Event> findEventByCreatedBy_Id(Long userId);
+
     long countByPublishedTrue();
 }

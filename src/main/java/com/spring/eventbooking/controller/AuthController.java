@@ -3,12 +3,14 @@ package com.spring.eventbooking.controller;
 import com.spring.eventbooking.dto.Request.LoginRequest;
 import com.spring.eventbooking.dto.Request.RegisterRequest;
 import com.spring.eventbooking.service.AuthService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "Auth Controller")
 @RestController
 @RequestMapping("/api/auth")
 @AllArgsConstructor

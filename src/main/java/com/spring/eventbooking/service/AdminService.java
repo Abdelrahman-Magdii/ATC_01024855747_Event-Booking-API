@@ -6,6 +6,7 @@ import com.spring.eventbooking.entity.Booking;
 import com.spring.eventbooking.entity.Event;
 import com.spring.eventbooking.entity.Role;
 import com.spring.eventbooking.entity.User;
+import com.spring.eventbooking.enums.BookingStatus;
 import com.spring.eventbooking.exception.GlobalException;
 import com.spring.eventbooking.repository.BookingRepository;
 import com.spring.eventbooking.repository.EventRepository;
@@ -83,9 +84,9 @@ public class AdminService {
         stats.setTotalEvents(eventRepository.count());
         stats.setTotalBookings(bookingRepository.count());
         stats.setPublishedEvents(eventRepository.countByPublishedTrue());
-        stats.setPendingBookings(bookingRepository.countByStatus("PENDING"));
-        stats.setConfirmedBookings(bookingRepository.countByStatus("CONFIRMED"));
-        stats.setCancelledBookings(bookingRepository.countByStatus("CANCELLED"));
+        stats.setPendingBookings(bookingRepository.countByStatus(BookingStatus.valueOf("PENDING")));
+        stats.setConfirmedBookings(bookingRepository.countByStatus(BookingStatus.valueOf("CONFIRMED")));
+        stats.setCancelledBookings(bookingRepository.countByStatus(BookingStatus.valueOf("CANCELLED")));
 
         return stats;
     }

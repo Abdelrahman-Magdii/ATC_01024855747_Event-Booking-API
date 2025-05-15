@@ -1,5 +1,7 @@
 package com.spring.eventbooking.entity;
 
+import com.spring.eventbooking.enums.BookingStatus;
+import com.spring.eventbooking.enums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,12 +32,12 @@ public class Booking {
     private BigDecimal totalPrice;
 
     @Column(nullable = false)
-    private String status; // CONFIRMED, CANCELLED, PENDING
+    @Enumerated(EnumType.STRING)
+    private BookingStatus status;
 
     private LocalDateTime bookedAt;
-    private String paymentStatus;
+    @Enumerated(EnumType.STRING)
+    private PaymentStatus paymentStatus;
     private String paymentReference;
-
-    // Getters, setters, constructors
 }
 

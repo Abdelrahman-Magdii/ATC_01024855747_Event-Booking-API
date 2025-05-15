@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-class TagResponse {
+public class TagResponse {
     private Long id;
     private String name;
 }

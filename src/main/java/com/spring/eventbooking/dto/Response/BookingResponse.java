@@ -2,6 +2,8 @@ package com.spring.eventbooking.dto.Response;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.spring.eventbooking.enums.BookingStatus;
+import com.spring.eventbooking.enums.PaymentStatus;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -24,11 +26,11 @@ public class BookingResponse {
     private String eventLocation;
     private Integer numberOfTickets;
     private BigDecimal totalPrice;
-    private String status;
+    private BookingStatus status;
 
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private LocalDateTime bookedAt;
 
-    private String paymentStatus;
+    private PaymentStatus paymentStatus;
     private String paymentReference;
 }
