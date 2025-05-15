@@ -2,14 +2,16 @@ package com.spring.eventbooking.dto.Request;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class BookingRequest {
-    @NotNull(message = "Event ID is required")
+    @NotNull(message = "{booking.eventId.required}")
     private Long eventId;
 
-    @NotNull(message = "Number of tickets is required")
-    @Positive(message = "Number of tickets must be positive")
+    @NotNull(message = "{booking.tickets.required}")
+    @Positive(message = "{booking.tickets.positive}")
     private Integer numberOfTickets = 1;
 }

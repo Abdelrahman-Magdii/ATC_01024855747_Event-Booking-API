@@ -4,6 +4,7 @@ import com.spring.eventbooking.dto.Request.EventRequest;
 import com.spring.eventbooking.dto.Response.ApiResponse;
 import com.spring.eventbooking.dto.Response.EventResponse;
 import com.spring.eventbooking.service.EventService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,6 +12,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,6 +20,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Tag(name = "Event Controller")
 @RestController
 @RequestMapping("/api/events")
 @RequiredArgsConstructor
@@ -89,6 +92,7 @@ public class EventController {
 
 
     @PostMapping("/{id}/publish")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ApiResponse> publishEvent(@PathVariable Long id) {
         eventService.setPublished(id, true);
         return ResponseEntity.ok(
@@ -101,6 +105,7 @@ public class EventController {
     }
 
     @PostMapping("/{id}/unpublish")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ApiResponse> unpublishEvent(@PathVariable Long id) {
         eventService.setPublished(id, false);
         return ResponseEntity.ok(
@@ -113,6 +118,7 @@ public class EventController {
     }
 
     @PostMapping("/{id}/images")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ApiResponse> uploadEventImage(
             @PathVariable Long id,
             @RequestParam MultipartFile image,
@@ -129,6 +135,7 @@ public class EventController {
     }
 
     @DeleteMapping("/images/{imageId}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ApiResponse> deleteImage(@PathVariable Long imageId) throws IOException {
         eventService.deleteImage(imageId);
         return ResponseEntity.ok(

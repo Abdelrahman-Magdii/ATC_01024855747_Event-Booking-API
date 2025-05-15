@@ -1,5 +1,6 @@
 package com.spring.eventbooking.dto.Response;
 
+import com.spring.eventbooking.utiles.GlobalFunction;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,6 @@ public class ApiResponse {
     private Object data;
 
     public ApiResponse(boolean success, String message, int status) {
-        this(success, message, status, null);
+        this(success, GlobalFunction.getMS(message), status, null);
     }
 }
