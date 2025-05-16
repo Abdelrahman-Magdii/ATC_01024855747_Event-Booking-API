@@ -105,9 +105,6 @@ public class SecurityConfig {
             }
         }
 
-        System.out.println("BASE_URL: " + baseUrl);
-        System.out.println("ALLOWED_ORIGINS: " + Arrays.toString(allowedOrigins));
-
 
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With", "Accept"));
