@@ -30,7 +30,8 @@ import java.util.Map;
 @EnableMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class SecurityConfig {
 
-    public static final String[] PUBLIC_APIS = {"/swagger-ui/**", "/api/auth/**", "/api-docs/**", "/"};
+    public static final String[] PUBLIC_APIS = {"/swagger-ui/**", "/api/auth/register", "/api/auth/register/admin",
+            "/api/auth/login", "/api-docs/**", "/"};
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final MessageSource ms;
