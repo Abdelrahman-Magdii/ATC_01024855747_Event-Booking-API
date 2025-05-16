@@ -68,26 +68,52 @@ jobs:
       - name: Install Heroku CLI
         run: curl https://cli-assets.heroku.com/install.sh | sh
 
-      - name: Create PostgreSQL database if not exists
+      - name: Create or Verify Heroku App
         run: |
-          heroku addons:create heroku-postgresql:hobby-dev --app ${{ secrets.HEROKU_APP_NAME }} || echo "Database already exists"
+          # Check if app exists, create if it doesn't
+          if ! heroku apps:info --app ${{ secrets.HEROKU_APP_NAME }} 2>/dev/null; then
+            heroku create ${{ secrets.HEROKU_APP_NAME }}
+            echo "Created new Heroku app"
+          else
+            echo "Heroku app already exists"
+          fi
 
-      - name: Extract Database Credentials
-        id: db-creds
+
+
+      - name: Create PostgreSQL Database
         run: |
-          # Get full DATABASE_URL
-          DB_URL=$(heroku config:get DATABASE_URL --app ${{ secrets.HEROKU_APP_NAME }})
-          echo "DATABASE_URL=$DB_URL" >> $GITHUB_ENV
+          # Check if database exists
+          if heroku addons:info heroku-postgresql --app ${{ secrets.HEROKU_APP_NAME }} 2>/dev/null; then
+            echo "Database already exists"
+          else
+            heroku addons:create heroku-postgresql:hobby-dev --app ${{ secrets.HEROKU_APP_NAME }}
+            echo "Database created successfully"
+            # Wait for database to be ready
+            sleep 15
+          fi
 
-          # Parse credentials from DATABASE_URL
-          DB_USER=$(echo $DB_URL | awk -F'://' '{print $2}' | awk -F':' '{print $1}')
-          DB_PASS=$(echo $DB_URL | awk -F':' '{print $3}' | awk -F'@' '{print $1}')
 
-          echo "DB_USERNAME=$DB_USER" >> $GITHUB_ENV
-          echo "DB_PASSWORD=$DB_PASS" >> $GITHUB_ENV
-          echo "DB_URL_PREFIX=$(echo $DB_URL | awk -F'://' '{print $1}')" >> $GITHUB_ENV
-          echo "DB_HOST_PORT=$(echo $DB_URL | awk -F'@' '{print $2}' | awk -F'/' '{print $1}')" >> $GITHUB_ENV
-          echo "DB_NAME=$(echo $DB_URL | awk -F'/' '{print $NF}')" >> $GITHUB_ENV
+      - name: Get Database Configuration
+        run: |
+          # Get DATABASE_URL
+           DB_URL=$(heroku config:get DATABASE_URL --app ${{ secrets.HEROKU_APP_NAME }})
+           echo "DATABASE_URL=$DB_URL" >> $GITHUB_ENV
+          
+           # Parse credentials (with error handling)
+           if [ -z "$DB_URL" ]; then
+             echo "Error: Could not get DATABASE_URL"
+             exit 1
+           fi
+          
+           DB_USER=$(echo "$DB_URL" | awk -F'://' '{print $2}' | awk -F':' '{print $1}')
+           DB_PASS=$(echo "$DB_URL" | awk -F':' '{print $3}' | awk -F'@' '{print $1}')
+          
+           echo "DB_USERNAME=$DB_USER" >> $GITHUB_ENV
+           echo "DB_PASSWORD=$DB_PASS" >> $GITHUB_ENV
+           echo "DB_URL_PREFIX=$(echo "$DB_URL" | awk -F'://' '{print $1}')" >> $GITHUB_ENV
+           echo "DB_HOST_PORT=$(echo "$DB_URL" | awk -F'@' '{print $2}' | awk -F'/' '{print $1}')" >> $GITHUB_ENV
+           echo "DB_NAME=$(echo "$DB_URL" | awk -F'/' '{print $NF}')" >> $GITHUB_ENV
+
 
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.14
