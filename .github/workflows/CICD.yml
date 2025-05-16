@@ -1,4 +1,4 @@
-﻿name: Build, Test, and Deploy Event Booking
+﻿name: Event Booking API CI/CD Pipeline
 
 on: [ push ]
 
@@ -16,6 +16,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '23'
+          java-package: jdk
 
       - name: Cache Maven packages
         uses: actions/cache@v3
@@ -26,10 +27,10 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Build and Test with Maven
-        run: mvn clean verify
+        run: mvn clean verify --enable-preview
 
       - name: Package Application
-        run: mvn package -DskipTests
+        run: mvn package -DskipTests --enable-preview
 
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
@@ -54,136 +55,75 @@ jobs:
           name: app-jar
           path: target
 
-      - name: Install Heroku CLI
-        run: curl https://cli-assets.heroku.com/install.sh | sh
-
-      - name: Login to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.14
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          heroku_email: "abdulrahman403828@fci.bu.edu.eg"
-          justlogin: true
-
-      - name: Create or Verify Heroku App
+      - name: Create necessary files for Heroku
         run: |
-          if ! heroku apps:info --app ${{ secrets.HEROKU_APP_NAME }} 2>/dev/null; then
-            heroku create ${{ secrets.HEROKU_APP_NAME }}
-            echo "Created new Heroku app"
-          else
-            echo "Heroku app already exists"
-          fi
-
-      - name: Add Heroku Postgres
-        run: |
-          if heroku addons:info heroku-postgresql --app ${{ secrets.HEROKU_APP_NAME }} 2>/dev/null; then
-            echo "Database already exists"
-          else
-            echo "Creating Heroku Postgres..."
-            heroku addons:create heroku-postgresql:${{ secrets.HEROKU_DB_PLAN }} --app ${{ secrets.HEROKU_APP_NAME }}
-            sleep 20  # wait for Heroku to provision the DB
-          fi
-
-      - name: Check Dynos Status
-        run: heroku ps --app ${{ secrets.HEROKU_APP_NAME }}
-
-      - name: Clear Existing Config
-        run: |
-          echo "Clearing potentially misconfigured variables..."
-          heroku config:unset SPRING_DATASOURCE_URL SPRING_DATASOURCE_USERNAME SPRING_DATASOURCE_PASSWORD --app ${{ secrets.HEROKU_APP_NAME }} || true
-
-      - name: Convert and Set Database Config
-        run: |
-          # Get and convert DATABASE_URL to JDBC format
-          DB_URL=$(heroku config:get DATABASE_URL --app ${{ secrets.HEROKU_APP_NAME }})
+          # Create system.properties file
+          echo "java.runtime.version=23" > system.properties
           
-          HOST_AND_DB=$(echo "$DB_URL" | sed -E 's|postgres://[^@]+@([^?]+).*|\1|')
-          
-          JDBC_URL="jdbc:postgresql://${HOST_AND_DB}?sslmode=require"
-          
-          DB_USER=$(echo "$DB_URL" | awk -F 'postgres://|:|@' '{print $2}')
-          DB_PASS=$(echo "$DB_URL" | awk -F 'postgres://|:|@' '{print $3}')
-          
-          # Set all environment variables atomically on Heroku app
-          heroku config:set \
-          SPRING_DATASOURCE_URL="$JDBC_URL" \
-          SPRING_DATASOURCE_USERNAME="$DB_USER" \
-          SPRING_DATASOURCE_PASSWORD="$DB_PASS" \
-          MAIL_USERNAME="${{ secrets.MAIL_USERNAME }}" \
-          MAIL_PASSWORD="${{ secrets.MAIL_PASSWORD }}" \
-          JWT_SECRET_KEY="${{ secrets.JWT_SECRET_KEY }}" \
-          BASE_URL="https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com" \
-          ALLOWED_ORIGINS="http://localhost:4200,https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com" \
-          SPRING_PROFILES_ACTIVE="prod" \
-          PORT="8080" \
-          JAVA_OPTS="-XX:+UseContainerSupport -Xmx300m -Xss512k -XX:CICompilerCount=2" \
-          --app ${{ secrets.HEROKU_APP_NAME }}
-
-      - name: Create Procfile if Missing
-        run: |
-          if [ ! -f Procfile ]; then
-            echo "Creating Procfile..."
-            echo "web: java -Dserver.port=\$PORT \$JAVA_OPTS -jar target/*.jar --spring.profiles.active=prod" > Procfile
-            git add Procfile || true
-            git config --global user.email "abdulrahman403828@fci.bu.edu.eg"
-            git config --global user.name "Abdelrahman-Magdii"
-            git commit -m "Add Procfile for Heroku deployment" || true
-          fi
+          # Create Procfile
+          echo "web: java --enable-preview -Dserver.port=\$PORT \$JAVA_OPTS -jar target/*.jar" > Procfile
 
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.14
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          heroku_email: "abdulrahman403828@fci.bu.edu.eg"
-          procfile: "web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar --spring.profiles.active=prod"
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          procfile: "web: java --enable-preview -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar"
 
-      - name: Check for Port Binding Issues
-        if: always()
+      - name: Add PostgreSQL Database
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          # Create a system.properties file to specify Java runtime
-          echo "java.runtime.version=17" > system.properties
-          git add system.properties || true
-          git config --global user.email "ci@example.com" || true
-          git config --global user.name "CI" || true
-          git commit -m "Add system.properties to specify Java runtime" || echo "No changes to commit"
+          # Check if PostgreSQL addon already exists
+          if heroku addons:info heroku-postgresql --app ${{ secrets.HEROKU_APP_NAME }} 2>/dev/null; then
+            echo "PostgreSQL database already exists"
+          else
+            echo "Creating PostgreSQL database..."
+            heroku addons:create heroku-postgresql:hobby-dev --app ${{ secrets.HEROKU_APP_NAME }}
+            sleep 10  # Wait for database provisioning
+          fi
+
+      - name: Configure Database Connection
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          # Get and convert DATABASE_URL to JDBC format for Spring Boot
+          DB_URL=$(heroku config:get DATABASE_URL --app ${{ secrets.HEROKU_APP_NAME }})
           
-          # Force push system.properties
-          heroku git:remote --app ${{ secrets.HEROKU_APP_NAME }}
-          git push heroku HEAD:main --force || echo "Failed to push system.properties"
-
-      - name: Check Logs After Deployment
-        if: always()
-        run: |
-          echo "Checking application logs for startup errors..."
-          heroku logs --num 100 --app ${{ secrets.HEROKU_APP_NAME }}
-
-      - name: Configure JVM Options
-        run: |
-          echo "Setting appropriate JVM options for Heroku..."
+          HOST_AND_DB=$(echo "$DB_URL" | sed -E 's|postgres://[^@]+@([^?]+).*|\1|')
+          JDBC_URL="jdbc:postgresql://${HOST_AND_DB}?sslmode=require"
+          
+          DB_USER=$(echo "$DB_URL" | awk -F 'postgres://|:|@' '{print $2}')
+          DB_PASS=$(echo "$DB_URL" | awk -F 'postgres://|:|@' '{print $3}')
+          
+          # Set database connection properties
           heroku config:set \
-          JAVA_OPTS="-Xmx300m -Xss512k -XX:CICompilerCount=2 -Dserver.port=\$PORT -Dspring.profiles.active=prod" \
+          SPRING_DATASOURCE_URL="$JDBC_URL" \
+          SPRING_DATASOURCE_USERNAME="$DB_USER" \
+          SPRING_DATASOURCE_PASSWORD="$DB_PASS" \
           --app ${{ secrets.HEROKU_APP_NAME }}
 
-      - name: Ensure Spring Boot Recognizes PORT Variable
+      - name: Configure Heroku Environment Variables
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
+          # Set all environment variables atomically on Heroku app
           heroku config:set \
+          SPRING_PROFILES_ACTIVE="prod" \
+          JAVA_OPTS="-Xmx300m -Xss512k -XX:CICompilerCount=2 --enable-preview" \
           SERVER_PORT="\$PORT" \
+          MAIL_USERNAME="${{ secrets.MAIL_USERNAME }}" \
+          MAIL_PASSWORD="${{ secrets.MAIL_PASSWORD }}" \
+          JWT_SECRET_KEY="${{ secrets.JWT_SECRET_KEY }}" \
           --app ${{ secrets.HEROKU_APP_NAME }}
 
-      - name: Check Database Configuration
+      - name: Verify Deployment
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          echo "Checking database configuration..."
-          heroku config --app ${{ secrets.HEROKU_APP_NAME }} | grep -i database
-          heroku config --app ${{ secrets.HEROKU_APP_NAME }} | grep -i spring
-
-      - name: Restart App With Debug Logging
-        run: |
-          echo "Enabling debug logging and restarting..."
-          heroku config:set LOGGING_LEVEL_ROOT=DEBUG LOGGING_LEVEL_ORG_SPRINGFRAMEWORK=DEBUG --app ${{ secrets.HEROKU_APP_NAME }}
-          heroku restart --app ${{ secrets.HEROKU_APP_NAME }}
-          sleep 15
-          heroku logs --tail --app ${{ secrets.HEROKU_APP_NAME }} &
-          LOGS_PID=$!
-          sleep 30
-          kill $LOGS_PID || true
+          echo "Checking application status..."
+          heroku ps --app ${{ secrets.HEROKU_APP_NAME }}
+          
+          echo "Checking recent logs..."
+          heroku logs --num 10 --app ${{ secrets.HEROKU_APP_NAME }}
