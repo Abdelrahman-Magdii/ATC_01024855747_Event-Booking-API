@@ -1,6 +1,5 @@
 package com.spring.eventbooking.security;
 
-import com.spring.eventbooking.config.SecurityConfig;
 import com.spring.eventbooking.entity.User;
 import com.spring.eventbooking.service.AuthService;
 import jakarta.servlet.FilterChain;
@@ -25,6 +24,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.spring.eventbooking.config.SecurityConfig.PUBLIC_APIS;
+
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -33,13 +34,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final AuthService authService;
 
-    private final AntPathMatcher pathMatcher = new AntPathMatcher();
-
 
     @Override
-    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-        String path = request.getServletPath();
-        return checkPath(path, SecurityConfig.PUBLIC_APIS);
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        return checkPath(request.getServletPath(), PUBLIC_APIS);
     }
 
     @Override
@@ -104,20 +102,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
 
     private boolean checkPath(String path, String[] publicPaths) {
-        String[] parts = path.split("/");
-        if (parts.length >= 3) {
-            String newPath = "/" + parts[1] + "/" + parts[2] + "/**";
-            return Arrays.asList(publicPaths).contains(newPath);
-        }
-        return false;
-    }
-
-    private boolean isPublicPath(String path) {
-        for (String publicPattern : SecurityConfig.PUBLIC_APIS) {
-            if (pathMatcher.match(publicPattern, path)) {
-                return true;
-            }
-        }
-        return false;
+        AntPathMatcher pathMatcher = new AntPathMatcher();
+        return Arrays.stream(publicPaths).anyMatch(pattern -> pathMatcher.match(pattern, path));
     }
 }
