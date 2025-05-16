@@ -119,6 +119,16 @@ jobs:
           JAVA_OPTS="-XX:+UseContainerSupport -Xmx300m -Xss512k -XX:CICompilerCount=2" \
           --app ${{ secrets.HEROKU_APP_NAME }}
 
+      - name: Create Procfile if Missing
+        run: |
+          if [ ! -f Procfile ]; then
+            echo "Creating Procfile..."
+            echo "web: java -Dserver.port=\$PORT \$JAVA_OPTS -jar target/*.jar --spring.profiles.active=prod" > Procfile
+            git add Procfile || true
+            git config --global user.email "abdulrahman403828@fci.bu.edu.eg"
+            git config --global user.name "Abdelrahman-Magdii"
+            git commit -m "Add Procfile for Heroku deployment" || true
+          fi
 
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.14
@@ -126,24 +136,54 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: "abdulrahman403828@fci.bu.edu.eg"
-          procfile: "web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar"
+          procfile: "web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar --spring.profiles.active=prod"
+
+      - name: Check for Port Binding Issues
+        if: always()
+        run: |
+          # Create a system.properties file to specify Java runtime
+          echo "java.runtime.version=17" > system.properties
+          git add system.properties || true
+          git config --global user.email "ci@example.com" || true
+          git config --global user.name "CI" || true
+          git commit -m "Add system.properties to specify Java runtime" || echo "No changes to commit"
+          
+          # Force push system.properties
+          heroku git:remote --app ${{ secrets.HEROKU_APP_NAME }}
+          git push heroku HEAD:main --force || echo "Failed to push system.properties"
 
       - name: Check Logs After Deployment
         if: always()
         run: |
-          echo "Checking application logs after deployment..."
+          echo "Checking application logs for startup errors..."
+          heroku logs --num 100 --app ${{ secrets.HEROKU_APP_NAME }}
+
+      - name: Configure JVM Options
+        run: |
+          echo "Setting appropriate JVM options for Heroku..."
+          heroku config:set \
+          JAVA_OPTS="-Xmx300m -Xss512k -XX:CICompilerCount=2 -Dserver.port=\$PORT -Dspring.profiles.active=prod" \
+          --app ${{ secrets.HEROKU_APP_NAME }}
+
+      - name: Ensure Spring Boot Recognizes PORT Variable
+        run: |
+          heroku config:set \
+          SERVER_PORT="\$PORT" \
+          --app ${{ secrets.HEROKU_APP_NAME }}
+
+      - name: Check Database Configuration
+        run: |
+          echo "Checking database configuration..."
+          heroku config --app ${{ secrets.HEROKU_APP_NAME }} | grep -i database
+          heroku config --app ${{ secrets.HEROKU_APP_NAME }} | grep -i spring
+
+      - name: Restart App With Debug Logging
+        run: |
+          echo "Enabling debug logging and restarting..."
+          heroku config:set LOGGING_LEVEL_ROOT=DEBUG LOGGING_LEVEL_ORG_SPRINGFRAMEWORK=DEBUG --app ${{ secrets.HEROKU_APP_NAME }}
+          heroku restart --app ${{ secrets.HEROKU_APP_NAME }}
+          sleep 15
           heroku logs --tail --app ${{ secrets.HEROKU_APP_NAME }} &
           LOGS_PID=$!
           sleep 30
-          kill $LOGS_PID || true
-
-      - name: Restart App If Needed
-        if: always()
-        run: |
-          echo "Restarting application..."
-          heroku restart --app ${{ secrets.HEROKU_APP_NAME }}
-          sleep 10
-          heroku logs --tail --app ${{ secrets.HEROKU_APP_NAME }} &
-          LOGS_PID=$!
-          sleep 15
           kill $LOGS_PID || true
