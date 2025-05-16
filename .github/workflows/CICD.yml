@@ -74,6 +74,10 @@ jobs:
             echo "Heroku app already exists"
           fi
 
+      - name: Add Heroku Postgres
+        run: heroku addons:create heroku-postgresql:essential-0 --app ${{ secrets.HEROKU_APP_NAME }}
+
+
       - name: Create PostgreSQL Database
         run: |
           if heroku addons:info heroku-postgresql --app ${{ secrets.HEROKU_APP_NAME }} 2>/dev/null; then
