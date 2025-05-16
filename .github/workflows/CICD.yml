@@ -84,9 +84,13 @@ jobs:
             sleep 20  # wait for Heroku to provision the DB
           fi
 
-      - name: Convert DATABASE_URL to JDBC
+      - name: Check Dynos Status
+        run: heroku ps --app ${{ secrets.HEROKU_APP_NAME }}
+
+      - name: Clear Existing Config
         run: |
-          echo "JDBC_DATABASE_URL=$(heroku config:get DATABASE_URL --app ${{ secrets.HEROKU_APP_NAME }} | sed 's/postgres:/jdbc:postgresql:/')?sslmode=require" >> $GITHUB_ENV
+          echo "Clearing potentially misconfigured variables..."
+          heroku config:unset SPRING_DATASOURCE_URL SPRING_DATASOURCE_USERNAME SPRING_DATASOURCE_PASSWORD --app ${{ secrets.HEROKU_APP_NAME }} || true
 
       - name: Convert and Set Database Config
         run: |
@@ -110,7 +114,11 @@ jobs:
           JWT_SECRET_KEY="${{ secrets.JWT_SECRET_KEY }}" \
           BASE_URL="https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com" \
           ALLOWED_ORIGINS="http://localhost:4200,https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com" \
+          SPRING_PROFILES_ACTIVE="prod" \
+          PORT="8080" \
+          JAVA_OPTS="-XX:+UseContainerSupport -Xmx300m -Xss512k -XX:CICompilerCount=2" \
           --app ${{ secrets.HEROKU_APP_NAME }}
+
 
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.14
@@ -118,3 +126,24 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: "abdulrahman403828@fci.bu.edu.eg"
+          procfile: "web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar"
+
+      - name: Check Logs After Deployment
+        if: always()
+        run: |
+          echo "Checking application logs after deployment..."
+          heroku logs --tail --app ${{ secrets.HEROKU_APP_NAME }} &
+          LOGS_PID=$!
+          sleep 30
+          kill $LOGS_PID || true
+
+      - name: Restart App If Needed
+        if: always()
+        run: |
+          echo "Restarting application..."
+          heroku restart --app ${{ secrets.HEROKU_APP_NAME }}
+          sleep 10
+          heroku logs --tail --app ${{ secrets.HEROKU_APP_NAME }} &
+          LOGS_PID=$!
+          sleep 15
+          kill $LOGS_PID || true

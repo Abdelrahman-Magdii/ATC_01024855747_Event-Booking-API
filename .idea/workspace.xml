@@ -165,7 +165,6 @@
       <envs>
         <env name="ALLOWED_ORIGINS" value="http://localhost:4200,https://event-booking-system.herokuapp.com" />
         <env name="BASE_URL" value="https://event-booking-system.herokuapp.com" />
-        <env name="DATABASE_URL" value="postgres://u4seabao74c6mt:pb7109cc176145d6f2e73220dc044147a7a99b4c2872b89bf10cfabe2bc006be7@c7s7ncbk19n97r.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d87t6fmsfvt3q0" />
         <env name="JWT_SECRET_KEY" value="U3ByaW5nQm9vdEF1dGhKZXlXaXRoU2VjcmV0S2V5MTIzNDU2Nzg5MA==" />
         <env name="MAIL_PASSWORD" value="zndj arav wkab tmob" />
         <env name="MAIL_USERNAME" value="abdelrahmanmagdi527@gmail.com" />
@@ -230,7 +229,7 @@
       <workItem from="1747250130838" duration="1717000" />
       <workItem from="1747274698812" duration="17798000" />
       <workItem from="1747362149997" duration="18831000" />
-      <workItem from="1747381484185" duration="2144000" />
+      <workItem from="1747381484185" duration="2481000" />
     </task>
     <servers />
   </component>
