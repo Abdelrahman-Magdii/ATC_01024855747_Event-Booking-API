@@ -72,6 +72,6 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.14
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: "Event Booking System"
+          heroku_app_name: "event-booking-system"
           heroku_email: "abdulrahman403828@fci.bu.edu.eg"
           procfile: "web: java -jar target/*.jar --server.port=$PORT $JAVA_OPTS"
