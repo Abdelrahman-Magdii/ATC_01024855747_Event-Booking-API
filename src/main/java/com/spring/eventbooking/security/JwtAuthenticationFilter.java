@@ -15,6 +15,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
@@ -31,6 +32,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final HandlerExceptionResolver handlerExceptionResolver;
 
     private final AuthService authService;
+
+    private final AntPathMatcher pathMatcher = new AntPathMatcher();
+
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
@@ -104,6 +108,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (parts.length >= 3) {
             String newPath = "/" + parts[1] + "/" + parts[2] + "/**";
             return Arrays.asList(publicPaths).contains(newPath);
+        }
+        return false;
+    }
+
+    private boolean isPublicPath(String path) {
+        for (String publicPattern : SecurityConfig.PUBLIC_APIS) {
+            if (pathMatcher.match(publicPattern, path)) {
+                return true;
+            }
         }
         return false;
     }
