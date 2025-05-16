@@ -90,7 +90,7 @@ jobs:
 
       - name: Convert and Set Database Config
         run: |
-          # Get Heroku's DATABASE_URL and convert to JDBC format
+          # Get and convert DATABASE_URL to JDBC format
           DB_URL=$(heroku config:get DATABASE_URL --app ${{ secrets.HEROKU_APP_NAME }})
           JDBC_URL="jdbc:postgresql://$(echo $DB_URL | sed 's/.*@//')?sslmode=require"
 
@@ -98,12 +98,18 @@ jobs:
           DB_USER=$(echo $DB_URL | awk -F'://|:|@' '{print $2}')
           DB_PASS=$(echo $DB_URL | awk -F'://|:|@' '{print $3}')
 
-          # Set all config vars
+          # Set ALL required config vars in one atomic operation
           heroku config:set \
             SPRING_DATASOURCE_URL="$JDBC_URL" \
             SPRING_DATASOURCE_USERNAME="$DB_USER" \
             SPRING_DATASOURCE_PASSWORD="$DB_PASS" \
-            SERVER_PORT=$PORT \
+            MAIL_USERNAME="${{ secrets.MAIL_USERNAME }}" \
+            MAIL_PASSWORD="${{ secrets.MAIL_PASSWORD }}" \
+            JWT_SECRET_KEY="${{ secrets.JWT_SECRET_KEY }}" \
+            BASE_URL="https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com" \
+            ALLOWED_ORIGINS="http://localhost:4200,https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com" \
+            SERVER_PORT="8080" \
+            SPRING_JPA_HIBERNATE_DDL_AUTO=update \
             --app ${{ secrets.HEROKU_APP_NAME }}
 
       - name: Deploy to Heroku
@@ -112,10 +118,3 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: "abdulrahman403828@fci.bu.edu.eg"
-        env:
-          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
-          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
-          JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
-          BASE_URL: https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com
-          ALLOWED_ORIGINS: http://localhost:4200,https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com
-          JDBC_DATABASE_URL: ${{ env.JDBC_DATABASE_URL }}

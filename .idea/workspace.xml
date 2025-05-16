@@ -9,6 +9,10 @@
       <change beforePath="$PROJECT_DIR$/../EventBookingUI/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/controller/HealthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/controller/HealthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-prod.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/controller/HealthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/controller/HealthController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/HELP.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/application.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/EventBookingApplication.class" beforeDir="false" />
@@ -168,7 +172,9 @@
         <env name="MAIL_PASSWORD" value="zndj arav wkab tmob" />
         <env name="MAIL_USERNAME" value="abdelrahmanmagdi527@gmail.com" />
         <env name="PORT" value="8080" />
-        <env name="SPRING_DATASOURCE_URL:         jdbc:postgresql://c7s7ncbk19n97r.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d87t6fmsfvt3q0?sslmode" value="require" />
+        <env name="SPRING_DATASOURCE_PASSWORD" value="pb7109cc176145d6f2e73220dc044147a7a99b4c2872b89bf10cfabe2bc006be7" />
+        <env name="SPRING_DATASOURCE_URL" value="jdbc:postgresql://c7s7ncbk19n97r.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d87t6fmsfvt3q0?sslmode=require" />
+        <env name="SPRING_DATASOURCE_USERNAME" value="u4seabao74c6mt" />
       </envs>
       <module name="eventbooking" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.spring.eventbooking.EventBookingApplication" />
@@ -225,7 +231,7 @@
       <workItem from="1747220005443" duration="18707000" />
       <workItem from="1747250130838" duration="1717000" />
       <workItem from="1747274698812" duration="17798000" />
-      <workItem from="1747362149997" duration="17562000" />
+      <workItem from="1747362149997" duration="18213000" />
     </task>
     <servers />
   </component>
