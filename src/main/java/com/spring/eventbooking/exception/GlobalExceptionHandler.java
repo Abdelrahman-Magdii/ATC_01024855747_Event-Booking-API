@@ -87,25 +87,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.FORBIDDEN);
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> handleGenericException(Exception ex, WebRequest request) {
-        Locale locale = LocaleContextHolder.getLocale();
-        String message = getLocalizedMessage("error.generic", null, locale, ex.getMessage());
-
-        ErrorDetails errorDetails = new ErrorDetails(
-                new Date(),
-                message,
-                request.getDescription(false)
-        );
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorDetails);
-    }
-
     private String getLocalizedErrorMessage(ObjectError error, Locale locale) {
         if (error instanceof FieldError) {
             FieldError fieldError = (FieldError) error;
             String messageKey = fieldError.getDefaultMessage();
 
-            // Check if the message is a key wrapped in curly braces (e.g., "{validation.email.required}")
             if (messageKey != null && messageKey.startsWith("{") && messageKey.endsWith("}")) {
                 messageKey = messageKey.substring(1, messageKey.length() - 1);
             }
