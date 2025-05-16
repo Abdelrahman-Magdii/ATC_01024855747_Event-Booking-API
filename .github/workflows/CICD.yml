@@ -118,8 +118,5 @@ jobs:
           MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
           MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
           JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
-          DATASOURCE_URL: ${{ env.DATABASE_URL }}
-          DATASOURCE_USERNAME: ${{ env.DB_USERNAME }}
-          DATASOURCE_PASSWORD: ${{ env.DB_PASSWORD }}
           BASE_URL: https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com
           ALLOWED_ORIGINS: http://localhost:4200,https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com
