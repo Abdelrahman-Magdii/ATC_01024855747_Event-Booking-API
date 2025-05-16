@@ -25,4 +25,10 @@ public class Category {
 
     @ManyToMany(mappedBy = "categories")
     private Set<Event> events = new HashSet<>();
+
+    public Category(long l, String music, String musicEvents) {
+        this.id = l;
+        this.name = music;
+        this.description = musicEvents;
+    }
 }

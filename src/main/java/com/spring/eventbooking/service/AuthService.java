@@ -18,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -41,12 +42,13 @@ public class AuthService {
         this.emailService = emailService;
     }
 
-    public ResponseEntity<?> register(RegisterRequest request, boolean isAdmin) throws MessagingException {
+    public ResponseEntity<JwtResponse> register(RegisterRequest request, boolean isAdmin) throws MessagingException {
 
         if (userRepository.existsByEmail(request.getEmail())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(GlobalFunction.getMS("email.already.use"));
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    GlobalFunction.getMS("email.already.use", request.getEmail())
+            );
         }
 
         User user = new User();
@@ -78,7 +80,7 @@ public class AuthService {
         return getResponseEntity(user);
     }
 
-    public ResponseEntity<?> login(LoginRequest loginRequest) {
+    public ResponseEntity<JwtResponse> login(LoginRequest loginRequest) {
 
         User user = userRepository.findByEmail(loginRequest.getEmail())
                 .orElseThrow(() -> new GlobalException(GlobalFunction.getMS("user.not.found"), HttpStatus.NOT_FOUND));
@@ -86,7 +88,7 @@ public class AuthService {
         return getResponseEntity(user);
     }
 
-    private ResponseEntity<?> getResponseEntity(User user) {
+    private ResponseEntity<JwtResponse> getResponseEntity(User user) {
 
 
         List<String> roles = user.getRoles().stream()

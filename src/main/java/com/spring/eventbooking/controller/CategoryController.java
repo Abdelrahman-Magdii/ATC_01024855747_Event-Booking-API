@@ -75,7 +75,7 @@ public class CategoryController {
         return ResponseEntity.noContent().build();
     }
 
-    private EventResponse mapEventToResponse(Event event) {
+    EventResponse mapEventToResponse(Event event) {
         List<String> categoryNames = event.getCategories().stream()
                 .map(Category::getName)
                 .collect(Collectors.toList());
@@ -105,7 +105,7 @@ public class CategoryController {
                 .build();
     }
 
-    private ImageResponse mapToImageResponse(EventImage image) {
+    ImageResponse mapToImageResponse(EventImage image) {
         return ImageResponse.builder()
                 .id(image.getId())
                 .url(image.getUrl())

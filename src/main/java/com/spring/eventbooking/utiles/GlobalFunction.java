@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class GlobalFunction {
 
-    private static MessageSource ms;
+    public static MessageSource ms;
 
     public static String getMS(String message, long userId) {
         return ms.getMessage(message, new Object[]{userId}, LocaleContextHolder.getLocale());

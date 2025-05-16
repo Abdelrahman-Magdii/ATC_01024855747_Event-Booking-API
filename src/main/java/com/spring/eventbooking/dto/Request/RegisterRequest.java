@@ -5,10 +5,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class RegisterRequest {
 
     @NotBlank(message = "{validation.email.required}")
@@ -30,4 +32,11 @@ public class RegisterRequest {
     @Pattern(regexp = "^\\+[0-9]{10,15}$", message = "{validation.phonenumber.pattern}")
     @Size(max = 15, message = "{validation.phonenumber.max}")
     private String phoneNumber;
+
+    public RegisterRequest(String mail, String first, String last, String password) {
+        this.email = mail;
+        this.firstName = first;
+        this.lastName = last;
+        this.password = password;
+    }
 }

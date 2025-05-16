@@ -2,6 +2,7 @@ package com.spring.eventbooking.controller;
 
 import com.spring.eventbooking.dto.Request.LoginRequest;
 import com.spring.eventbooking.dto.Request.RegisterRequest;
+import com.spring.eventbooking.dto.Response.JwtResponse;
 import com.spring.eventbooking.service.AuthService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
@@ -22,17 +23,17 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest registerRequest) throws MessagingException {
+    public ResponseEntity<JwtResponse> registerUser(@Valid @RequestBody RegisterRequest registerRequest) throws MessagingException {
         return authService.register(registerRequest, false);
     }
 
     @PostMapping("/register/admin")
-    public ResponseEntity<?> registerAdmin(@Valid @RequestBody RegisterRequest registerRequest) throws MessagingException {
+    public ResponseEntity<JwtResponse> registerAdmin(@Valid @RequestBody RegisterRequest registerRequest) throws MessagingException {
         return authService.register(registerRequest, true);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<JwtResponse> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         return authService.login(loginRequest);
     }
 }

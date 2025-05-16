@@ -24,4 +24,9 @@ public class Tag {
 
     @ManyToMany(mappedBy = "tags")
     private Set<Event> events = new HashSet<>();
+
+    public Tag(long l, String live) {
+        this.id = l;
+        this.name = live;
+    }
 }

@@ -25,5 +25,13 @@ public class EventImage {
     private String altText;
     private boolean isPrimary;
     private LocalDateTime uploadedAt;
+
+    public EventImage(long l, String url, String alt, boolean b) {
+        this.id = l;
+        this.url = url;
+        this.altText = alt;
+        this.isPrimary = b;
+        this.uploadedAt = LocalDateTime.now();
+    }
 }
 

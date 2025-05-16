@@ -139,7 +139,7 @@ public class EventService {
         return mapToResponse(updatedEvent);
     }
 
-    private void addCategories(EventRequest request, Event existingEvent) {
+    public void addCategories(EventRequest request, Event existingEvent) {
         if (request.getCategories() != null && !request.getCategories().isEmpty()) {
             Set<Category> categories = new HashSet<>();
             for (String tagName : request.getCategories()) {
@@ -155,7 +155,7 @@ public class EventService {
         }
     }
 
-    private void addTags(EventRequest request, Event existingEvent) {
+    public void addTags(EventRequest request, Event existingEvent) {
         if (request.getTags() != null && !request.getTags().isEmpty()) {
             Set<Tag> tags = new HashSet<>();
             for (String tagName : request.getTags()) {
@@ -225,7 +225,7 @@ public class EventService {
         event.setUpdatedAt(LocalDateTime.now());
     }
 
-    private EventResponse mapToResponse(Event event) {
+    public EventResponse mapToResponse(Event event) {
         return EventResponse.builder()
                 .id(event.getId())
                 .title(event.getTitle())

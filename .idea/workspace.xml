@@ -6,17 +6,54 @@
   <component name="ChangeListManager">
     <list default="true" id="37303e00-2d99-4444-9552-0ce6c6da5cbc" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/../.idea/Event Booking.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/spring/eventbooking/controller/AdminControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/spring/eventbooking/controller/AuthControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/spring/eventbooking/controller/BookingControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/spring/eventbooking/controller/CategoryControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/spring/eventbooking/controller/EventControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/spring/eventbooking/controller/HealthControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/spring/eventbooking/service/AdminServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/spring/eventbooking/service/AuthServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/spring/eventbooking/service/BookingServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/spring/eventbooking/service/CategoryServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/spring/eventbooking/service/EventServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/spring/eventbooking/service/FileStorageServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../EventBookingUI/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/controller/RoleController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/dto/Request/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/dto/Request/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/dto/Request/RegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/dto/Request/RegisterRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/dto/Response/JwtResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/dto/Response/JwtResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/entity/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/entity/EventImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/entity/EventImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/entity/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/entity/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/EventService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/RoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/TagService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/utiles/GlobalFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/utiles/GlobalFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/security/JwtAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/security/JwtAuthenticationFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/controller/CategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/controller/CategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/controller/RoleController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/dto/Request/LoginRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/dto/Request/LoginRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/dto/Request/RegisterRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/dto/Request/RegisterRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/dto/Response/JwtResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/dto/Response/JwtResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/entity/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/entity/Category.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/entity/EventImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/entity/EventImage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/entity/Tag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/entity/Tag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/exception/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/service/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/service/AuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/service/EventService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/service/EventService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/service/RoleService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/service/TagService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/utiles/GlobalFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/utiles/GlobalFunction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/33598791-0292-49db-98d7-c26b4582dfac_Screenshot from 2025-05-14 22-25-57.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/uploads_Screenshot from 2025-05-14 22-25-57.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/HELP.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/application.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/EventBookingApplication.class" beforeDir="false" />
@@ -96,6 +133,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="1" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -103,6 +143,7 @@
         <option value="HTML File" />
         <option value="Class" />
         <option value="Dockerfile" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -132,6 +173,23 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.AdminControllerTest.executor": "Run",
+    "JUnit.AdminControllerTest.publishEvent_ShouldReturnSuccessResponseWhenUnpublished.executor": "Debug",
+    "JUnit.AdminControllerTest.updateUserRole_ShouldReturnSuccessResponse.executor": "Run",
+    "JUnit.AdminServiceTest.executor": "Coverage",
+    "JUnit.AuthControllerTest.executor": "Coverage",
+    "JUnit.AuthServiceTest.executor": "Coverage",
+    "JUnit.BookingControllerTest.deleteBooking_ShouldReturnSuccessResponse.executor": "Run",
+    "JUnit.BookingControllerTest.executor": "Coverage",
+    "JUnit.BookingServiceTest.executor": "Coverage",
+    "JUnit.CategoryControllerTest.executor": "Coverage",
+    "JUnit.CategoryServiceTest.executor": "Coverage",
+    "JUnit.CategoryServiceTest.getCategoryById_ShouldThrowException_WhenNotFound.executor": "Run",
+    "JUnit.EventControllerTest.executor": "Run",
+    "JUnit.EventServiceTest.executor": "Run",
+    "JUnit.FileStorageServiceTest.constructor_ShouldCreateUploadsDirectory.executor": "Coverage",
+    "JUnit.FileStorageServiceTest.executor": "Coverage",
+    "JUnit.eventbooking in eventbooking.executor": "Coverage",
     "Maven.eventbooking [clean].executor": "Run",
     "Maven.eventbooking [install].executor": "Run",
     "Maven.eventbooking [package].executor": "Run",
@@ -144,6 +202,8 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.EventBookingApplication.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "extract.method.default.visibility": "private",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
@@ -170,45 +230,98 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/java/com/spring/eventbooking" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.spring.eventbooking.controller" />
+      <recent name="com.spring.eventbooking.service" />
+    </key>
   </component>
-  <component name="RunManager">
-    <configuration name="EventBookingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <envs>
-        <env name="ALLOWED_ORIGINS" value="http://localhost:4200,https://event-booking-system.herokuapp.com" />
-        <env name="BASE_URL" value="https://event-booking-system.herokuapp.com" />
-        <env name="JWT_SECRET_KEY" value="U3ByaW5nQm9vdEF1dGhKZXlXaXRoU2VjcmV0S2V5MTIzNDU2Nzg5MA==" />
-        <env name="MAIL_PASSWORD" value="zndj arav wkab tmob" />
-        <env name="MAIL_USERNAME" value="abdelrahmanmagdi527@gmail.com" />
-        <env name="PORT" value="8080" />
-        <env name="SPRING_DATASOURCE_PASSWORD" value="pb7109cc176145d6f2e73220dc044147a7a99b4c2872b89bf10cfabe2bc006be7" />
-        <env name="SPRING_DATASOURCE_URL" value="jdbc:postgresql://c7s7ncbk19n97r.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d87t6fmsfvt3q0?sslmode=require" />
-        <env name="SPRING_DATASOURCE_USERNAME" value="u4seabao74c6mt" />
-      </envs>
+  <component name="RunManager" selected="Spring Boot.EventBookingApplication">
+    <configuration name="EventControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="eventbooking" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.spring.eventbooking.EventBookingApplication" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.spring.eventbooking.*" />
+          <option name="PATTERN" value="com.spring.eventbooking.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <extension name="net.ashald.envfile">
-        <option name="IS_ENABLED" value="false" />
-        <option name="IS_SUBST" value="false" />
-        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
-        <option name="IS_IGNORE_MISSING_FILES" value="false" />
-        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
-        <ENTRIES>
-          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
-        </ENTRIES>
+      <option name="PACKAGE_NAME" value="com.spring.eventbooking.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.spring.eventbooking.controller.EventControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileStorageServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eventbooking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.spring.eventbooking.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.spring.eventbooking.service" />
+      <option name="MAIN_CLASS_NAME" value="com.spring.eventbooking.service.FileStorageServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileStorageServiceTest.constructor_ShouldCreateUploadsDirectory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eventbooking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.spring.eventbooking.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.spring.eventbooking.service" />
+      <option name="MAIN_CLASS_NAME" value="com.spring.eventbooking.service.FileStorageServiceTest" />
+      <option name="METHOD_NAME" value="constructor_ShouldCreateUploadsDirectory" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HealthControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eventbooking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.spring.eventbooking.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.spring.eventbooking.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.spring.eventbooking.controller.HealthControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="eventbooking in eventbooking" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eventbooking" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/com/spring/eventbooking" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventBookingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="eventbooking" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.spring.eventbooking.EventBookingApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.EventBookingApplication" />
+        <item itemvalue="JUnit.eventbooking in eventbooking" />
+        <item itemvalue="JUnit.HealthControllerTest" />
+        <item itemvalue="JUnit.EventControllerTest" />
+        <item itemvalue="JUnit.FileStorageServiceTest" />
+        <item itemvalue="JUnit.FileStorageServiceTest.constructor_ShouldCreateUploadsDirectory" />
       </list>
     </recent_temporary>
   </component>
@@ -242,7 +355,7 @@
       <workItem from="1747362149997" duration="18831000" />
       <workItem from="1747381484185" duration="6716000" />
       <workItem from="1747392934576" duration="4346000" />
-      <workItem from="1747397661470" duration="948000" />
+      <workItem from="1747397661470" duration="13498000" />
     </task>
     <servers />
   </component>
@@ -263,5 +376,44 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/eventbooking$AuthControllerTest.ic" NAME="AuthControllerTest Coverage Results" MODIFIED="1747433184074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.spring.eventbooking.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/eventbooking$EventControllerTest.ic" NAME="EventControllerTest Coverage Results" MODIFIED="1747437050383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.spring.eventbooking.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/eventbooking$BookingServiceTest.ic" NAME="BookingServiceTest Coverage Results" MODIFIED="1747431057888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.spring.eventbooking.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/eventbooking$AuthServiceTest.ic" NAME="AuthServiceTest Coverage Results" MODIFIED="1747433681597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.spring.eventbooking.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/eventbooking$CategoryControllerTest.ic" NAME="CategoryControllerTest Coverage Results" MODIFIED="1747434852346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.spring.eventbooking.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/eventbooking$FileStorageServiceTest.ic" NAME="FileStorageServiceTest Coverage Results" MODIFIED="1747436553454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.spring.eventbooking.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/eventbooking$FileStorageServiceTest_constructor_ShouldCreateUploadsDirectory.ic" NAME="FileStorageServiceTest.constructor_ShouldCreateUploadsDirectory Coverage Results" MODIFIED="1747436395765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.spring.eventbooking.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/eventbooking$eventbooking_in_eventbooking.ic" NAME="eventbooking in eventbooking Coverage Results" MODIFIED="1747436569487" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/eventbooking$AdminControllerTest.ic" NAME="AdminControllerTest Coverage Results" MODIFIED="1747428134601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.spring.eventbooking.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/eventbooking$EventServiceTest.ic" NAME="EventServiceTest Coverage Results" MODIFIED="1747436173756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.spring.eventbooking.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/eventbooking$CategoryServiceTest.ic" NAME="CategoryServiceTest Coverage Results" MODIFIED="1747435146250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.spring.eventbooking.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/eventbooking$AdminServiceTest.ic" NAME="AdminServiceTest Coverage Results" MODIFIED="1747427896984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.spring.eventbooking.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/eventbooking$BookingControllerTest.ic" NAME="BookingControllerTest Coverage Results" MODIFIED="1747434268649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.spring.eventbooking.controller.*</FILTER>
+    </SUITE>
   </component>
 </project>

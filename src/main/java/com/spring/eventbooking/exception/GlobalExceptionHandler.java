@@ -87,18 +87,18 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.FORBIDDEN);
     }
 
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<?> handleGenericException(Exception ex, WebRequest request) {
-//        Locale locale = LocaleContextHolder.getLocale();
-//        String message = getLocalizedMessage("error.generic", null, locale, ex.getMessage());
-//
-//        ErrorDetails errorDetails = new ErrorDetails(
-//                new Date(),
-//                message,
-//                request.getDescription(false)
-//        );
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorDetails);
-//    }
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> handleGenericException(Exception ex, WebRequest request) {
+        Locale locale = LocaleContextHolder.getLocale();
+        String message = getLocalizedMessage("error.generic", null, locale, ex.getMessage());
+
+        ErrorDetails errorDetails = new ErrorDetails(
+                new Date(),
+                message,
+                request.getDescription(false)
+        );
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorDetails);
+    }
 
     private String getLocalizedErrorMessage(ObjectError error, Locale locale) {
         if (error instanceof FieldError) {
