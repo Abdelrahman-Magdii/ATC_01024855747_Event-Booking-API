@@ -90,8 +90,15 @@ jobs:
 
       - name: Set Heroku Config Vars
         run: |
+          # Extract username and password from DATABASE_URL
+          DB_URL=$(heroku config:get DATABASE_URL --app ${{ secrets.HEROKU_APP_NAME }})
+          DB_USER=$(echo $DB_URL | sed 's|postgres://\([^:]*\):.*|\1|')
+          DB_PASS=$(echo $DB_URL | sed 's|postgres://[^:]*:\([^@]*\)@.*|\1|')
+
           heroku config:set \
             JDBC_DATABASE_URL="$JDBC_DATABASE_URL" \
+            DATASOURCE_USERNAME="$DB_USER" \
+            DATASOURCE_PASSWORD="$DB_PASS" \
             MAIL_USERNAME="${{ secrets.MAIL_USERNAME }}" \
             MAIL_PASSWORD="${{ secrets.MAIL_PASSWORD }}" \
             JWT_SECRET_KEY="${{ secrets.JWT_SECRET_KEY }}" \
