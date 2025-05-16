@@ -110,7 +110,6 @@ jobs:
           JWT_SECRET_KEY="${{ secrets.JWT_SECRET_KEY }}" \
           BASE_URL="https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com" \
           ALLOWED_ORIGINS="http://localhost:4200,https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com" \
-          SPRING_JPA_HIBERNATE_DDL_AUTO=update \
           --app ${{ secrets.HEROKU_APP_NAME }}
 
       - name: Deploy to Heroku
