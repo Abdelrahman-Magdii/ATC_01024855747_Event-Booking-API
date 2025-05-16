@@ -83,14 +83,15 @@ jobs:
 
       - name: Create PostgreSQL Database
         run: |
-          # Check if database exists
           if heroku addons:info heroku-postgresql --app ${{ secrets.HEROKU_APP_NAME }} 2>/dev/null; then
             echo "Database already exists"
           else
-            heroku addons:create heroku-postgresql:mini --app ${{ secrets.HEROKU_APP_NAME }}
+            if ! heroku addons:create heroku-postgresql:basic --app ${{ secrets.HEROKU_APP_NAME }}; then
+              echo "Failed to create basic plan, trying hobby-basic..."
+              heroku addons:create heroku-postgresql:hobby-basic --app ${{ secrets.HEROKU_APP_NAME }}
+            fi
             echo "Database created successfully"
-            # Wait for database to be ready
-            sleep 15
+            sleep 30
           fi
 
 
