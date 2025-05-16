@@ -78,23 +78,22 @@ jobs:
           # Get full DATABASE_URL
           DB_URL=$(heroku config:get DATABASE_URL --app ${{ secrets.HEROKU_APP_NAME }})
           echo "DATABASE_URL=$DB_URL" >> $GITHUB_ENV
-          
+
           # Parse credentials from DATABASE_URL
           DB_USER=$(echo $DB_URL | awk -F'://' '{print $2}' | awk -F':' '{print $1}')
           DB_PASS=$(echo $DB_URL | awk -F':' '{print $3}' | awk -F'@' '{print $1}')
-          
+
           echo "DB_USERNAME=$DB_USER" >> $GITHUB_ENV
           echo "DB_PASSWORD=$DB_PASS" >> $GITHUB_ENV
           echo "DB_URL_PREFIX=$(echo $DB_URL | awk -F'://' '{print $1}')" >> $GITHUB_ENV
           echo "DB_HOST_PORT=$(echo $DB_URL | awk -F'@' '{print $2}' | awk -F'/' '{print $1}')" >> $GITHUB_ENV
           echo "DB_NAME=$(echo $DB_URL | awk -F'/' '{print $NF}')" >> $GITHUB_ENV
 
-
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.14
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: "event-booking-system"
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: "abdulrahman403828@fci.bu.edu.eg"
         env:
           MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
