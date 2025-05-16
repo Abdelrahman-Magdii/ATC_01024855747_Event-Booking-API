@@ -63,6 +63,10 @@ jobs:
           # Create Procfile with proper preview flag
           echo "web: java -Dserver.port=\$PORT \$JAVA_OPTS --enable-preview -jar target/*.jar" > Procfile
 
+      - name: Install Heroku CLI
+        run: |
+          curl https://cli-assets.heroku.com/install.sh | sh
+
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.14
         with:
