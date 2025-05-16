@@ -17,7 +17,6 @@ jobs:
           distribution: 'temurin'
           java-version: '23'
 
-
       - name: Cache Maven packages
         uses: actions/cache@v3
         with:
@@ -34,7 +33,6 @@ jobs:
 
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
-
         with:
           name: app-jar
           path: target/*.jar
@@ -56,21 +54,19 @@ jobs:
           name: app-jar
           path: target
 
+      - name: Install Heroku CLI
+        run: curl https://cli-assets.heroku.com/install.sh | sh
+
       - name: Login to Heroku
         uses: akhileshns/heroku-deploy@v3.12.14
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: "event-booking-system"
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: "abdulrahman403828@fci.bu.edu.eg"
           justlogin: true
 
-
-      - name: Install Heroku CLI
-        run: curl https://cli-assets.heroku.com/install.sh | sh
-
       - name: Create or Verify Heroku App
         run: |
-          # Check if app exists, create if it doesn't
           if ! heroku apps:info --app ${{ secrets.HEROKU_APP_NAME }} 2>/dev/null; then
             heroku create ${{ secrets.HEROKU_APP_NAME }}
             echo "Created new Heroku app"
@@ -78,44 +74,38 @@ jobs:
             echo "Heroku app already exists"
           fi
 
-
-
-
       - name: Create PostgreSQL Database
         run: |
           if heroku addons:info heroku-postgresql --app ${{ secrets.HEROKU_APP_NAME }} 2>/dev/null; then
             echo "Database already exists"
           else
-            if ! heroku addons:create heroku-postgresql:basic --app ${{ secrets.HEROKU_APP_NAME }}; then
-              echo "Failed to create basic plan, trying hobby-basic..."
-              heroku addons:create heroku-postgresql:hobby-basic --app ${{ secrets.HEROKU_APP_NAME }}
+            if ! heroku addons:create heroku-postgresql:${{ secrets.HEROKU_DB_PLAN }} --app ${{ secrets.HEROKU_APP_NAME }}; then
+              echo "Failed to create database with plan '${{ secrets.HEROKU_DB_PLAN }}'"
+              heroku addons:plans heroku-postgresql
+              exit 1
             fi
             echo "Database created successfully"
             sleep 30
           fi
 
-
       - name: Get Database Configuration
         run: |
-          # Get DATABASE_URL
-           DB_URL=$(heroku config:get DATABASE_URL --app ${{ secrets.HEROKU_APP_NAME }})
-           echo "DATABASE_URL=$DB_URL" >> $GITHUB_ENV
+          DB_URL=$(heroku config:get DATABASE_URL --app ${{ secrets.HEROKU_APP_NAME }})
+          echo "DATABASE_URL=$DB_URL" >> $GITHUB_ENV
           
-           # Parse credentials (with error handling)
-           if [ -z "$DB_URL" ]; then
-             echo "Error: Could not get DATABASE_URL"
-             exit 1
-           fi
+          if [ -z "$DB_URL" ]; then
+            echo "Error: Could not get DATABASE_URL"
+            exit 1
+          fi
           
-           DB_USER=$(echo "$DB_URL" | awk -F'://' '{print $2}' | awk -F':' '{print $1}')
-           DB_PASS=$(echo "$DB_URL" | awk -F':' '{print $3}' | awk -F'@' '{print $1}')
+          DB_USER=$(echo "$DB_URL" | awk -F'://' '{print $2}' | awk -F':' '{print $1}')
+          DB_PASS=$(echo "$DB_URL" | awk -F':' '{print $3}' | awk -F'@' '{print $1}')
           
-           echo "DB_USERNAME=$DB_USER" >> $GITHUB_ENV
-           echo "DB_PASSWORD=$DB_PASS" >> $GITHUB_ENV
-           echo "DB_URL_PREFIX=$(echo "$DB_URL" | awk -F'://' '{print $1}')" >> $GITHUB_ENV
-           echo "DB_HOST_PORT=$(echo "$DB_URL" | awk -F'@' '{print $2}' | awk -F'/' '{print $1}')" >> $GITHUB_ENV
-           echo "DB_NAME=$(echo "$DB_URL" | awk -F'/' '{print $NF}')" >> $GITHUB_ENV
-
+          echo "DB_USERNAME=$DB_USER" >> $GITHUB_ENV
+          echo "DB_PASSWORD=$DB_PASS" >> $GITHUB_ENV
+          echo "DB_URL_PREFIX=$(echo "$DB_URL" | awk -F'://' '{print $1}')" >> $GITHUB_ENV
+          echo "DB_HOST_PORT=$(echo "$DB_URL" | awk -F'@' '{print $2}' | awk -F'/' '{print $1}')" >> $GITHUB_ENV
+          echo "DB_NAME=$(echo "$DB_URL" | awk -F'/' '{print $NF}')" >> $GITHUB_ENV
 
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.14
