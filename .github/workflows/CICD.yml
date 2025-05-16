@@ -100,11 +100,9 @@ jobs:
 
           # Set all config vars
           heroku config:set \
-            JDBC_DATABASE_URL="$JDBC_URL" \
             SPRING_DATASOURCE_URL="$JDBC_URL" \
             SPRING_DATASOURCE_USERNAME="$DB_USER" \
             SPRING_DATASOURCE_PASSWORD="$DB_PASS" \
-            SPRING_JPA_HIBERNATE_DDL_AUTO=update \
             SERVER_PORT=$PORT \
             --app ${{ secrets.HEROKU_APP_NAME }}
 
