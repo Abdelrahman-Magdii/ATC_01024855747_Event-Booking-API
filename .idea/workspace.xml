@@ -9,8 +9,11 @@
       <change beforePath="$PROJECT_DIR$/../EventBookingUI/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/security/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/security/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/exception/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/security/JwtAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/security/JwtAuthenticationFilter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/HELP.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/application.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/EventBookingApplication.class" beforeDir="false" />
@@ -267,12 +270,44 @@
       </method>
     </configuration>
     <configuration name="EventBookingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="ALLOWED_ORIGINS" value="https://event-booking-system-f79cebebc9ce.herokuapp.com,http://localhost:4200" />
+        <env name="BASE_URL" value="https://event-booking-system-f79cebebc9ce.herokuapp.com" />
+        <env name="DATABASE_URL" value="postgres://u4seabao74c6mt:pb7109cc176145d6f2e73220dc044147a7a99b4c2872b89bf10cfabe2bc006be7@c7s7ncbk19n97r.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d87t6fmsfvt3q0" />
+        <env name="JAVA_OPTS" value="-Xmx300m -Xss512k -XX:CICompilerCount=2 --enable-preview" />
+        <env name="JWT_SECRET_KEY" value="U3ByaW5nQm9vdEF1dGhKZXlXaXRoU2VjcmV0S2V5MTIzNDU2Nzg5MA==" />
+        <env name="MAIL_PASSWORD" value="zndj arav wkab tmob" />
+        <env name="MAIL_USERNAME" value="abdelrahmanmagdi527@gmail.com" />
+        <env name="MAVEN_OPTS" value="--enable-preview" />
+        <env name="PORT" value="8080" />
+        <env name="SPRING_DATASOURCE_PASSWORD" value="pb7109cc176145d6f2e73220dc044147a7a99b4c2872b89bf10cfabe2bc006be7" />
+        <env name="SPRING_DATASOURCE_URL" value="jdbc:postgresql://c7s7ncbk19n97r.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d87t6fmsfvt3q0?sslmode=require" />
+        <env name="SPRING_DATASOURCE_USERNAME" value="u4seabao74c6mt" />
+      </envs>
       <module name="eventbooking" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.spring.eventbooking.EventBookingApplication" />
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.eventbooking in eventbooking" />
+      <item itemvalue="JUnit.EventControllerTest" />
+      <item itemvalue="JUnit.FileStorageServiceTest" />
+      <item itemvalue="JUnit.FileStorageServiceTest.constructor_ShouldCreateUploadsDirectory" />
+      <item itemvalue="JUnit.HealthControllerTest" />
+      <item itemvalue="Spring Boot.EventBookingApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.eventbooking in eventbooking" />
@@ -314,7 +349,7 @@
       <workItem from="1747381484185" duration="6716000" />
       <workItem from="1747392934576" duration="4346000" />
       <workItem from="1747397661470" duration="13750000" />
-      <workItem from="1747437789087" duration="685000" />
+      <workItem from="1747437789087" duration="1192000" />
     </task>
     <servers />
   </component>

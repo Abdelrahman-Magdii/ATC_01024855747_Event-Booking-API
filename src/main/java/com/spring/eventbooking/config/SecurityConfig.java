@@ -99,7 +99,7 @@ public class SecurityConfig {
         }
 
         // Add all allowed origins
-        if (allowedOrigins != null && allowedOrigins.length > 0) {
+        if (allowedOrigins != null) {
             for (String origin : allowedOrigins) {
                 configuration.addAllowedOrigin(origin.trim());
             }
