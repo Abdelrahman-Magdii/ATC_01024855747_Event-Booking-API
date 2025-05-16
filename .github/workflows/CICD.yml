@@ -114,18 +114,12 @@ jobs:
         run: |
           # Set all environment variables atomically on Heroku app
           heroku config:set \
-          SPRING_PROFILES_ACTIVE="prod" \
           JAVA_OPTS="-Xmx300m -Xss512k -XX:CICompilerCount=2 --enable-preview" \
-          SERVER_PORT="\$PORT" \
           PORT="8080" \
           MAVEN_OPTS="--enable-preview" \
           MAIL_USERNAME="${{ secrets.MAIL_USERNAME }}" \
           MAIL_PASSWORD="${{ secrets.MAIL_PASSWORD }}" \
           JWT_SECRET_KEY="${{ secrets.JWT_SECRET_KEY }}" \
-          SPRING_JPA_HIBERNATE_DDL_AUTO="update" \
-          SPRING_JPA_SHOW_SQL="false" \
-          SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL="false" \
-          SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT="org.hibernate.dialect.PostgreSQLDialect" \
           --app ${{ secrets.HEROKU_APP_NAME }}
 
       - name: Verify Deployment
