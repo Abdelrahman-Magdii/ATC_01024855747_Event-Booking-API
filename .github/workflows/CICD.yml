@@ -84,7 +84,7 @@ jobs:
             sleep 20  # wait for Heroku to provision the DB
           fi
 
-      - name: Convert DATABASE_URL to JDBC format
+      - name: Convert DATABASE_URL to JDBC
         run: |
           echo "JDBC_DATABASE_URL=$(heroku config:get DATABASE_URL --app ${{ secrets.HEROKU_APP_NAME }} | sed 's/postgres:/jdbc:postgresql:/')?sslmode=require" >> $GITHUB_ENV
 
