@@ -2,12 +2,11 @@ package com.spring.eventbooking.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.eventbooking.security.JwtAuthenticationFilter;
+import com.spring.eventbooking.utiles.GlobalFunction;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,7 +33,6 @@ public class SecurityConfig {
             , "/api/auth/**"};
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-    private final MessageSource ms;
 
     @Value("${cors.allowed-origins}")
     private String[] allowedOrigins;
@@ -60,7 +58,7 @@ public class SecurityConfig {
                             response.setContentType("application/json");
                             response.setCharacterEncoding("UTF-8");
 
-                            String message = ms.getMessage("security.permission", null, LocaleContextHolder.getLocale());
+                            String message = GlobalFunction.getMS("security.permission");
 
                             Map<String, String> errorResponse = Map.of(
                                     "message", message,
