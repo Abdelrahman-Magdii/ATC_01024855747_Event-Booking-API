@@ -30,7 +30,7 @@ import java.util.Map;
 public class SecurityConfig {
 
     public static final String[] PUBLIC_APIS = {"/swagger-ui/**", "/api-docs/**", "/"
-            , "/api/auth/**", "/error"};
+            , "/api/auth/**", "/error", "templates/welcome-email.html"};
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
