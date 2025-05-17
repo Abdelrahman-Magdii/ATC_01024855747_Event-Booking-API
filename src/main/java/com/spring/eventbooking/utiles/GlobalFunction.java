@@ -9,6 +9,10 @@ public class GlobalFunction {
 
     public static MessageSource ms;
 
+    public GlobalFunction(MessageSource messageSource) {
+        GlobalFunction.ms = messageSource;
+    }
+
     public static String getMS(String message, long userId) {
         return ms.getMessage(message, new Object[]{userId}, LocaleContextHolder.getLocale());
     }
