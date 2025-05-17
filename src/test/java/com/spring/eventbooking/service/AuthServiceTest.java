@@ -25,7 +25,6 @@ import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -189,11 +188,11 @@ public class AuthServiceTest {
         when(userRepository.existsByEmail(request.getEmail())).thenReturn(true);
 
         // Act & Assert
-        ResponseStatusException exception = assertThrows(ResponseStatusException.class,
+        GlobalException exception = assertThrows(GlobalException.class,
                 () -> authService.register(request, false));
 
-        assertEquals(HttpStatus.BAD_REQUEST, exception.getStatusCode());
-        assertEquals("Email is already in use", exception.getReason());
+        assertEquals(HttpStatus.BAD_REQUEST, exception.getStatus());
+        assertEquals("Email is already in use", exception.getMessage());
 
         verify(userRepository).existsByEmail(request.getEmail());
         verifyNoMoreInteractions(userRepository);

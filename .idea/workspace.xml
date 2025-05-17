@@ -8,7 +8,12 @@
       <change afterPath="$PROJECT_DIR$/../.idea/Event Booking.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../EventBookingUI/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/spring/eventbooking/service/AuthServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/spring/eventbooking/service/AuthServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-prod.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/service/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/service/AuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/utiles/GlobalFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/spring/eventbooking/utiles/GlobalFunction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/HELP.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/application.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/EventBookingApplication.class" beforeDir="false" />
@@ -194,7 +199,23 @@
       <recent name="com.spring.eventbooking.service" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.EventBookingApplication">
+  <component name="RunManager" selected="JUnit.AuthServiceTest.register_ShouldThrowWhenEmailExists">
+    <configuration name="AuthServiceTest.register_ShouldThrowWhenEmailExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eventbooking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.spring.eventbooking.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.spring.eventbooking.service" />
+      <option name="MAIN_CLASS_NAME" value="com.spring.eventbooking.service.AuthServiceTest" />
+      <option name="METHOD_NAME" value="register_ShouldThrowWhenEmailExists" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EventControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="eventbooking" />
       <extension name="coverage">
@@ -221,22 +242,6 @@
       <option name="PACKAGE_NAME" value="com.spring.eventbooking.service" />
       <option name="MAIN_CLASS_NAME" value="com.spring.eventbooking.service.FileStorageServiceTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FileStorageServiceTest.constructor_ShouldCreateUploadsDirectory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="eventbooking" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.spring.eventbooking.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.spring.eventbooking.service" />
-      <option name="MAIN_CLASS_NAME" value="com.spring.eventbooking.service.FileStorageServiceTest" />
-      <option name="METHOD_NAME" value="constructor_ShouldCreateUploadsDirectory" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -296,20 +301,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.AuthServiceTest.register_ShouldThrowWhenEmailExists" />
       <item itemvalue="JUnit.eventbooking in eventbooking" />
       <item itemvalue="JUnit.EventControllerTest" />
       <item itemvalue="JUnit.FileStorageServiceTest" />
-      <item itemvalue="JUnit.FileStorageServiceTest.constructor_ShouldCreateUploadsDirectory" />
       <item itemvalue="JUnit.HealthControllerTest" />
       <item itemvalue="Spring Boot.EventBookingApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AuthServiceTest.register_ShouldThrowWhenEmailExists" />
         <item itemvalue="JUnit.eventbooking in eventbooking" />
         <item itemvalue="JUnit.HealthControllerTest" />
         <item itemvalue="JUnit.EventControllerTest" />
         <item itemvalue="JUnit.FileStorageServiceTest" />
-        <item itemvalue="JUnit.FileStorageServiceTest.constructor_ShouldCreateUploadsDirectory" />
       </list>
     </recent_temporary>
   </component>
@@ -344,7 +349,8 @@
       <workItem from="1747381484185" duration="6716000" />
       <workItem from="1747392934576" duration="4346000" />
       <workItem from="1747397661470" duration="13750000" />
-      <workItem from="1747437789087" duration="3505000" />
+      <workItem from="1747437789087" duration="3647000" />
+      <workItem from="1747441649170" duration="142000" />
     </task>
     <servers />
   </component>
@@ -388,7 +394,7 @@
     <SUITE FILE_PATH="coverage/eventbooking$FileStorageServiceTest_constructor_ShouldCreateUploadsDirectory.ic" NAME="FileStorageServiceTest.constructor_ShouldCreateUploadsDirectory Coverage Results" MODIFIED="1747436395765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.spring.eventbooking.service.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/eventbooking$eventbooking_in_eventbooking.ic" NAME="eventbooking in eventbooking Coverage Results" MODIFIED="1747437401792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/eventbooking$eventbooking_in_eventbooking.ic" NAME="eventbooking in eventbooking Coverage Results" MODIFIED="1747441700231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/eventbooking$AdminControllerTest.ic" NAME="AdminControllerTest Coverage Results" MODIFIED="1747428134601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.spring.eventbooking.controller.*</FILTER>
     </SUITE>
