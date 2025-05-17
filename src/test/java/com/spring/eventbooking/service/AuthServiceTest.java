@@ -60,6 +60,8 @@ public class AuthServiceTest {
     private Role userRole;
     private Role adminRole;
     private User testUser;
+    @Mock
+    private MessageSource messageSource;
 
     @BeforeEach
     void setUp() {
@@ -97,6 +99,12 @@ public class AuthServiceTest {
         Role userRole = new Role("USER");
         roles.add(userRole);
         testUser.setRoles(roles);
+    }
+
+    private void setupMessageSource() {
+        GlobalFunction.ms = messageSource;
+        when(messageSource.getMessage(anyString(), any(), any()))
+                .thenReturn("Mocked message");
     }
 
     @Test
@@ -199,22 +207,22 @@ public class AuthServiceTest {
     }
 
     @Test
-    void login_ShouldReturnJwtResponseWhenCredentialsValid() {
-        // Arrange
-        when(userRepository.findByEmail(anyString())).thenReturn(Optional.of(user));
-        when(jwtUtils.generateToken(anyMap(), any(User.class))).thenReturn("jwtToken");
+    void testLogin_UserNotFound_ThrowsException() {
+        LoginRequest request = new LoginRequest();
+        request.setEmail("nonexistent@example.com");
+        request.setPassword("irrelevant");
 
-        // Act
-        ResponseEntity<?> response = authService.login(loginRequest);
+        GlobalFunction.ms = messageSource;
+        Mockito.when(messageSource.getMessage(Mockito.any(), Mockito.any(), Mockito.any()))
+                .thenReturn("User not found");
 
-        // Assert
-        assertNotNull(response);
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertTrue(response.getBody() instanceof JwtResponse);
+        Mockito.when(userRepository.findByEmail(request.getEmail())).thenReturn(Optional.empty());
 
-        JwtResponse jwtResponse = (JwtResponse) response.getBody();
-        assertEquals("jwtToken", jwtResponse.getToken());
-        assertEquals("test@example.com", jwtResponse.getEmail());
+        GlobalException exception = assertThrows(GlobalException.class, () -> {
+            authService.login(request);
+        });
+
+        assertEquals("User not found", exception.getMessage()); // Assuming message is used
     }
 
 

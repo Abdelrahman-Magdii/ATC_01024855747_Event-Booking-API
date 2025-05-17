@@ -83,10 +83,14 @@ public class AuthService {
         User user = userRepository.findByEmail(loginRequest.getEmail())
                 .orElseThrow(() -> new GlobalException(GlobalFunction.getMS("user.not.found"), HttpStatus.NOT_FOUND));
 
+        if (!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
+            throw new GlobalException(GlobalFunction.getMS("password.invalid"), HttpStatus.BAD_REQUEST);
+        }
+
         return getResponseEntity(user);
     }
 
-    private ResponseEntity<JwtResponse> getResponseEntity(User user) {
+    ResponseEntity<JwtResponse> getResponseEntity(User user) {
 
 
         List<String> roles = user.getRoles().stream()
