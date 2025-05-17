@@ -8,8 +8,6 @@
       <change afterPath="$PROJECT_DIR$/../.idea/Event Booking.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../EventBookingUI/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/eventbooking/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/HELP.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/application.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../eventbookingAPI/target/classes/com/spring/eventbooking/EventBookingApplication.class" beforeDir="false" />
@@ -452,7 +450,7 @@
       <workItem from="1747437789087" duration="3647000" />
       <workItem from="1747441649170" duration="188000" />
       <workItem from="1747474459444" duration="2745000" />
-      <workItem from="1747478533209" duration="29000" />
+      <workItem from="1747478533209" duration="264000" />
     </task>
     <servers />
   </component>
