@@ -18,7 +18,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -45,10 +44,9 @@ public class AuthService {
     public ResponseEntity<JwtResponse> register(RegisterRequest request, boolean isAdmin) throws MessagingException {
 
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST,
-                    GlobalFunction.getMS("email.already.use", request.getEmail())
-            );
+            throw new GlobalException(
+                    GlobalFunction.getMS("email.already.use")
+                    , HttpStatus.BAD_REQUEST);
         }
 
         User user = new User();
